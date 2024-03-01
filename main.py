@@ -12,7 +12,7 @@ from func import particles_loop, spatial_lowpass_filter, shift_half_step
 file_out = 'work_result_test.h5'
 
 # Selecting the simulation
-hdf5_path = "/home/lorenzo/supercomputer/sim_MANIP2022/sim_MANIP2022_toy_PT/diags_5_19_cm-3_1_J_3_um_slice/hdf5"
+hdf5_path = ".../hdf5"
 sim = LpaDiagnostics(hdf5_path, backend='h5py', check_all_files=False)
 
 # Set to True if you want to decompose the magnetic field in m=0,1 modes (False by default)
