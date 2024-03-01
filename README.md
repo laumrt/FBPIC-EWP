@@ -24,5 +24,5 @@ FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each 
 * tqdm
 
 ## Files
-* `func.py`: Python module containing all the functions necessary to perform the work calculation (`interp_2D`, `particles_loop`, `spatial_lowpass_filter` and `spatial_lowpass_filter`)
+* `func.py`: Python module containing all the functions necessary to perform the work calculation (`interp_2D`, `particles_loop`, `spatial_lowpass_filter` and `shift_half_step`)
 * `main.py`: Python module that allows to select the simulation and the electrons to study. It performs the actual work calcuation using the `func.py` module 
