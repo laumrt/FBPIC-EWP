@@ -8,8 +8,8 @@ The motivation behind FBPIC-EWP stems from the need to understand the contributi
 
 ## Key Features
 This is done as follows:
-* \textbf{Field Retrieval Process}: FBPIC-EWP retrieves the total field ($\mathbf{E}_T$) on all selected particles, along with their coordinates $(x, y, z)$ and normalized momenta ($u$) for every FBPIC iteration. The total electric field is defined as the sum of the Laser and Plasma fields (i.e., $\mathbf{E}_L$ and $\mathbf{E}_W$ respectively)
-* \textbf{Laser and Plasma field Calculation}: Disposing of the 3D electric field map, a 2D linear interpolation is performed for m=0 in order to calculate the Plasma electric field on each electron. Subsequently, the Laser electric field is retrieved as $\mathbf{E}_L = \mathbf{E}_T - \mathbf{E}_W$
-* \textbf{Work Calculation}: Lastly, the work of each electric field component is calculated as $W_{W,L} = -e \int_{0}^{t} \mathbf{E}_{W,L} \cdot \mathbf{v}\,dt'$ in the time interval $[0, t]$. The results are stored in a .h5 file.
+* __Field Retrieval Process__: FBPIC-EWP retrieves the total field ($\mathbf{E}_T$) on all selected particles, along with their coordinates $(x, y, z)$ and normalized momenta ($u$) for every FBPIC iteration. The total electric field is defined as the sum of the Laser and Plasma fields (i.e., $\mathbf{E}_L$ and $\mathbf{E}_W$ respectively)
+* __Laser and Plasma field Calculation__: Disposing of the 3D electric field map, a 2D linear interpolation is performed for m=0 in order to calculate the Plasma electric field on each electron. Subsequently, the Laser electric field is retrieved as $\mathbf{E}_L = \mathbf{E}_T - \mathbf{E}_W$
+* __Work Calculation__: Lastly, the work of each electric field component is calculated as $W_{W,L} = -e \int_{0}^{t} \mathbf{E}_{W,L} \cdot \mathbf{v}\,dt'$ in the time interval $[0, t]$. The results are stored in a .h5 file.
 
 FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each particle
