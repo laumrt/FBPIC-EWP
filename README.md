@@ -20,8 +20,9 @@ FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each 
 * SciPy
 * numba
 * h5py
+* [openPMD-viewer](https://github.com/openPMD/openPMD-viewer)
 * tqdm
-* openpmd-viewer
 
 ## Files
-* '__func.py__'
+* `func.py`: Python module containing all the functions necessary to perform the work calculation (`interp_2D`, `particles_loop`, `spatial_lowpass_filter` and `spatial_lowpass_filter`)
+* `main.py`: 
