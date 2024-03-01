@@ -2,7 +2,7 @@
 FBPIC-EWP, short for Fourier-Bessel Particle-In-Cell Electric Work Profiler, is a tool designed to estimate the work performed by the Laser and Plasma fields on tracked electrons in FBPIC ([Fourier-Bessel Particle-In-Cell](https://github.com/fbpic/fbpic)) simulations.
 
 ## Overview and Motivation
-FBPIC-EWP operates within the context of FBPIC simulations that employs a set of 2D cylindrical grids to represent fields with distinct azimuthal modes. While m=0 corresponds to fields independent of the azimuthal angle $\theta$, m>1 represents fields varying proportionally to $\cos(\theta)$ and $\sin(\theta)$. In an idealized scenario, m=1 represents the laser field.
+FBPIC-EWP operates within the context of FBPIC simulations, which employs a set of 2D cylindrical grids to represent fields with distinct azimuthal modes. While m=0 corresponds to fields independent of the azimuthal angle $\theta$, m>1 represents fields varying proportionally to $\cos(\theta)$ and $\sin(\theta)$. In an idealized scenario, m=1 represents the laser field.
 
 The motivation behind FBPIC-EWP stems from the need to understand the contribution of both the Laser and Plasma fields to regimes like Direct Laser Acceleration. By estimating the work performed by these fields, researchers can gain insights into the acceleration mechanisms of tracked electrons.
 
@@ -14,4 +14,14 @@ This is done as follows:
 
 FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each particle.
 
+## Requirements
+* Python 3.x
+* NumPy
+* SciPy
+* numba
+* h5py
+* tqdm
+* openpmd-viewer
 
+## Files
+* '__func.py__'
