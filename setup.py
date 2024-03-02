@@ -1,3 +1,7 @@
+# Copyright 2024, Lorenzo Martelli
+# Authors: Lorenzo Martelli, Igor Andriyash
+# License: GPL3
+
 from setuptools import setup, find_packages
 
 try:
@@ -24,5 +28,16 @@ setup(
     install_requires=install_requires,
     include_package_data=True,
     platforms='any',
+    url='https://github.com/laumrt/FBPIC-EWP',
+    classifiers=[
+        'Programming Language :: Python',
+        'Natural Language :: English',
+        'Environment :: Console',
+        'Intended Audience :: Science/Research',
+        'Operating System :: OS Independent',
+        'Topic :: Scientific/Engineering :: Physics',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5'],
     zip_safe=False
 )
