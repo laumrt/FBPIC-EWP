@@ -31,7 +31,7 @@ FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each 
 You can install FBPIC-EWP cloning the source
 ```python
 git clone https://github.com/laumrt/FBPIC-EWP.git
-cd CheatSheet
+cd FBPIC-EWP
 pip install .
 ```
 or directly with PiPy
