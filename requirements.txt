@@ -1,0 +1,6 @@
+numpy
+scipy
+numba
+h5py
+openPMD-viewer
+tqdm
