@@ -6,6 +6,9 @@ try:
 except (ImportError, RuntimeError):
     long_description = open('./README.md').read()
 
+with open('requirements.txt') as f:
+    install_requires = [ line.strip('\n') for line in f.readlines() ]
+
 setup(
     name='FBPIC-EWP',
     version='v1.0.0',
@@ -18,7 +21,7 @@ setup(
     package_data={"": ['*']},
     tests_require=[],
     cmdclass={},
-    install_requires=['numpy', 'scipy', 'numba', 'h5py', 'openPMD-viewer', 'tqdm'],
+    install_requires=install_requires,
     include_package_data=True,
     platforms='any',
     zip_safe=False
