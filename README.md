@@ -1,5 +1,5 @@
 # FBPIC-Electric Work Profiler (FBPIC-EWP)
-FBPIC-EWP, short for Fourier-Bessel Particle-In-Cell Electric Work Profiler, is a tool designed to estimate the work performed by the Laser and Plasma fields on tracked electrons in FBPIC ([Fourier-Bessel Particle-In-Cell](https://github.com/fbpic/fbpic)) simulations.
+FBPIC-EWP, short for FBPIC-Electric Work Profiler, is a tool designed to estimate the work performed by the Laser and Plasma fields on tracked electrons in FBPIC ([Fourier-Bessel Particle-In-Cell](https://github.com/fbpic/fbpic)) simulations.
 
 ## Overview and Motivation
 FBPIC-EWP operates within the context of FBPIC simulations, which employs a set of 2D cylindrical grids to represent fields with distinct azimuthal modes. While m=0 corresponds to fields independent of the azimuthal angle $\theta$, m>1 represents fields varying proportionally to $\cos(\theta)$ and $\sin(\theta)$. In an idealized scenario, m=1 represents the laser field.
