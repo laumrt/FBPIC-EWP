@@ -25,4 +25,20 @@ FBPIC-EWP also allows to calculate the Laser and Plasma magnetic fields on each 
 
 ## Files
 * `func.py`: Python module containing all the functions necessary to perform the work calculation (`interp_2D`, `particles_loop`, `spatial_lowpass_filter` and `shift_half_step`)
-* `main.py`: Python module that allows to select the simulation and the electrons to study. It performs the actual work calcuation using the `func.py` module 
+* `main.py`: Python module that allows to select the simulation and the electrons to study. It performs the actual work calcuation using the `func.py` module
+
+## Installation
+You can install FBPIC-EWP cloning the source
+```python
+git clone https://github.com/laumrt/FBPIC-EWP.git
+cd CheatSheet
+pip install .
+```
+or directly with PiPy
+```
+pip install git+https://github.com/laumrt/FBPIC-EWP.git
+```
+
+## Contributions
+Your contributions and suggestions for improvements are welcome.
+If you encounter any issues or have ideas for enhancements, please feel free to open an issue or submit a pull request. 
