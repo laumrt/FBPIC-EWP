@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10776689.svg)](https://doi.org/10.5281/zenodo.10776689)
+
 # FBPIC-Electric Work Profiler (FBPIC-EWP)
 FBPIC-EWP, short for FBPIC-Electric Work Profiler, is a tool designed to estimate the work performed by the Laser and Plasma fields on tracked electrons in FBPIC ([Fourier-Bessel Particle-In-Cell](https://github.com/fbpic/fbpic)) simulations.
 
