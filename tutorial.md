@@ -1,4 +1,6 @@
 # Code Explanation (main.py)
+This tutorial guides you through the process of analyzing FBPIC simulation results simulation data using FBPIC-EWP. Here, we provide an explanation of the different sections of the code, allowing the user to define the parameters for the postprocessing analysis.
+
 ## 1. Imports and Initial Setup
 First, we import the necessary libraries and define the output file name (`file_out`) and simulation path (`hdf5_path`). Subsequently, the code imports the simulation (`sim = LpaDiagnostics(...)`) and it is possible to set `magnetic_field = True`, in case to calculate the laser and plasma magnetic field on each tracked particle. 
 
