@@ -57,7 +57,7 @@ else:
        spec=species, select=pt_select)
 ```
 ## 5. Field Calculation Loop
-For each time step, extract and filter the electric and magnetic field components. Use a JIT-compiled loop to interpolate the fields onto the particle positions and save the electric field components for each particle. Here, ('Ex_las, Ey_las, Ez_las') and ('Ex_wake, Ey_wake, Ez_wake') are arrays containing the laser and plasma electric field at each iteration for each selected particle. Analogously, ('Bx_las, By_las, Bz_las') and ('Bx_wake, By_wake, Bz_wake') are arrays containing the laser and plasma magnetic field at each iteration for each selected particle. 
+For each time step, extract and filter the electric and magnetic field components. Use a JIT-compiled loop (see `func.py`) to interpolate the fields onto the particle positions and save the electric field components for each particle. Here, (`Ex_las, Ey_las, Ez_las`) and (`Ex_wake, Ey_wake, Ez_wake`) are arrays containing the laser and plasma electric field at each iteration for each selected particle. Analogously, (`Bx_las, By_las, Bz_las`) and (`Bx_wake, By_wake, Bz_wake`) are arrays containing the laser and plasma magnetic field at each iteration for each selected particle. 
 ```python
 print('(2/3) Calculating the electric fields on each particle... \n')
 
@@ -121,4 +121,63 @@ for it in tqdm(range(N_t)):
         By_wake[it, :] = By_w
         Bz_wake[it, :] = Bz_w
 
+```
+## 6. Work Calculation
+For each particle, shift the momenta by half a time step, calculate the Lorentz factor and normalized velocities, compute the work done by the laser and wakefield components, and save the results. Here, (`Wx_las, Wy_las, Wz_las`) and (`Wx_wake, Wy_wake, Wz_wake`) are arrays containing the laser and plasma work at each iteration for each selected particle.
+```python
+print('(3/3) Calculating the laser and wakefield work on each particle... \n')
+
+########################## Solution ##########################
+for ip in tqdm(range(N_p)):
+    ux_p, uy_p, uz_p = ux[:, ip], uy[:, ip], uz[:, ip]
+    Ex_las_p, Ey_las_p, Ez_las_p = Ex_las[:, ip], Ey_las[:, ip], Ez_las[:, ip]
+    Ex_wake_p, Ey_wake_p, Ez_wake_p = Ex_wake[:, ip], Ey_wake[:, ip], Ez_wake[:, ip]
+
+    ux_p = shift_half_step(ux_p, t, dt)
+    uy_p = shift_half_step(uy_p, t, dt)
+    uz_p = shift_half_step(uz_p, t, dt)
+    
+    gamma_p = (1. + ux_p**2 + uy_p**2 + uz_p**2)**0.5
+    bx_p, by_p, bz_p = ux_p / gamma_p, uy_p / gamma_p, uz_p / gamma_p
+
+    Wx_las_p = -e * c * np.cumsum(Ex_las_p * bx_p) * dt
+    Wy_las_p = -e * c * np.cumsum(Ey_las_p * by_p) * dt
+    Wz_las_p = -e * c * np.cumsum(Ez_las_p * bz_p) * dt
+
+    Wx_wake_p = -e * c * np.cumsum(Ex_wake_p * bx_p) * dt
+    Wy_wake_p = -e * c * np.cumsum(Ey_wake_p * by_p) * dt
+    Wz_wake_p = -e * c * np.cumsum(Ez_wake_p * bz_p) * dt
+    
+    Wx_las[:, ip] = Wx_las_p
+    Wy_las[:, ip] = Wy_las_p
+    Wz_las[:, ip] = Wz_las_p
+
+    Wx_wake[:, ip] = Wx_wake_p
+    Wy_wake[:, ip] = Wy_wake_p
+    Wz_wake[:, ip] = Wz_wake_p
+    
+    gamma_c[:, ip] = gamma_p
+```
+
+## 8. Save Results to HDF5
+Finally, save all the calculated data to an HDF5 file.
+```python
+# Saving the data in a .h5 file
+f_out = h5py.File(file_out, 'w')
+
+f_out['w'], f_out['ids'] = w, id_array
+f_out['x'], f_out['y'], f_out['z'] = x, y, z
+f_out['ux'], f_out['uy'], f_out['uz'] = ux, uy, uz
+
+f_out['Ex_wake'], f_out['Ey_wake'], f_out['Ez_wake'] = Ex_wake, Ey_wake, Ez_wake
+f_out['Ex_las'], f_out['Ey_las'], f_out['Ez_las'] = Ex_las, Ey_las, Ez_las
+
+f_out['Wx_wake'], f_out['Wy_wake'], f_out['Wz_wake'] = Wx_wake, Wy_wake, Wz_wake
+f_out['Wx_las'], f_out['Wy_las'], f_out['Wz_las'] = Wx_las, Wy_las, Wz_las
+
+if magnetic_field:
+    f_out['Bx_wake'], f_out['By_wake'], f_out['Bz_wake'] = Bx_wake, By_wake, Bz_wake
+    f_out['Bx_las'], f_out['By_las'], f_out['Bz_las'] = Bx_las, By_las, Bz_las
+
+f_out.close()
 ```
